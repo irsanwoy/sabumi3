@@ -1,5 +1,7 @@
+// file: lib/screens/dashboard.dart
 import 'package:flutter/material.dart';
-import 'package:sabumi3/widgets/navbar.dart';  // Periksa path ini
+import 'package:sabumi3/widgets/navbar.dart'; // Pastikan path ini benar
+import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -7,10 +9,16 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Navbar(),  // Pastikan Navbar dipanggil dengan benar di sini
+      appBar: Navbar(), // Navbar di bagian atas
       body: Center(
-        child: Text('Welcome to the Dashboard!'),
+        child: Image.asset(
+          'assets/bgds.jpg', // Gambar background
+          fit: BoxFit.fill,
+          width: 500,
+          height: double.infinity,
+        ),
       ),
+      bottomNavigationBar: Bottomnavbar(), // Panggil Footer di sini
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sabumi3/screens/dashboard.dart';
+import 'package:sabumi3/screens/kuliner.dart';
+import 'package:sabumi3/screens/wisata.dart';
 
 class Navbar extends StatelessWidget implements PreferredSizeWidget {
   const Navbar({super.key});
@@ -35,7 +37,10 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
               TextButton(
                 onPressed: () {
                   // Aksi untuk masuk ke screen Wisata
-                  print("Navigating to Wisata screen...");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Wisata()),
+                  );
                 },
                 child: Text('Wisata', style: TextStyle(color: Colors.white)),
               ),
@@ -43,7 +48,10 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
               TextButton(
                 onPressed: () {
                   // Aksi untuk masuk ke screen Kuliner
-                  print("Navigating to Kuliner screen...");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Kuliner()),
+                  );
                 },
                 child: Text('Kuliner', style: TextStyle(color: Colors.white)),
               ),
@@ -56,5 +64,6 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
 
   // Mendefinisikan ukuran appBar
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight); // Ukuran default AppBar
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight); // Ukuran default AppBar
 }
