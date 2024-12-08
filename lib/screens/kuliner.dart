@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sabumi3/widgets/navbar.dart'; // Periksa path ini
 import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
-
-
+import 'package:sabumi3/screens/pemesanan_kuliner.dart';
 
 class Kuliner extends StatelessWidget {
   const Kuliner({super.key});
@@ -11,52 +10,110 @@ class Kuliner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Navbar(), // Menampilkan Navbar
-      body: SingleChildScrollView(
-        // Memungkinkan scroll untuk body
-        child: Center( // Menambahkan Center di sini
+      body: Container(
+        // Menambahkan gambar background dengan BoxDecoration
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+                'assets/bg.jpg'), // Ganti dengan path gambar background Anda
+            fit: BoxFit.cover, // Menyesuaikan gambar dengan ukuran layar
+          ),
+        ),
+        child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Untuk memastikan konten berada di tengah secara vertikal
             children: [
-              // Menampilkan teks di bagian atas
+              // Gambar utama (Bumi Aki)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/bumi_aki.png', // Ganti dengan path gambar utama Anda
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 250, // Gambar utama yang lebih besar
+                ),
+              ),
+              // Teks Review
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Kuliner\nBumi Aki', // Judul atau deskripsi lainnya dengan baris baru
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center, // Menambahkan teks agar berada di tengah
+                  'Review Kuliner Bumi Aki',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ),
-              // Galeri Gambar 1
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/gambar1.jpg', // Ganti dengan path gambar yang sesuai
-                  fit: BoxFit.cover,
-                  width: double.infinity, // Gambar akan mengisi lebar layar
-                  height: 200, // Atur tinggi gambar
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  'Nikmati kuliner terbaik yang ada di Bumi Aki, tempat yang sangat cocok untuk keluarga dan teman-teman.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
-              // Galeri Gambar 2
+              SizedBox(height: 20),
+              // Dua gambar menu yang bersebelahan
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/gambar2.jpg', // Ganti dengan path gambar yang sesuai
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: 200,
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    // Gambar menu 1
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                              'assets/menu1.png'), // Ganti dengan path gambar menu 1
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    // Gambar menu 2
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                              'assets/menu2.png'), // Ganti dengan path gambar menu 2
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              // Galeri Gambar 3
+              SizedBox(height: 20),
+              // Tombol Order
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/gambar3.jpg', // Ganti dengan path gambar yang sesuai
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: 200,
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Aksi ketika tombol ditekan
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PemesananKuliner()),
+                    );
+                    // Anda bisa menambahkan navigasi atau aksi lain di sini
+                  },
+                  child: Text(
+                    'Order Disini',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(
+                        0xFFF77437), // Ganti warna tombol sesuai kebutuhan
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
                 ),
               ),
-              // Tambahkan lebih banyak gambar sesuai kebutuhan
             ],
           ),
         ),

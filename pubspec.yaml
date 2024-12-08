@@ -63,6 +63,17 @@ flutter:
     - assets/logo.png
     - assets/bg.jpg
     - assets/bgds.jpg
+    - assets/savilage.jpeg
+    - assets/kamar.jpg
+    - assets/tenda.png
+    - assets/bumi_aki.png
+    - assets/menu1.png
+    - assets/menu2.png
+    - assets/ayambakar.png
+    - assets/nasiliwet.png
+    - assets/surabi.png
+    - assets/mojito.png
+    - assets/profile.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

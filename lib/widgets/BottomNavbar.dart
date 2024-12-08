@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sabumi3/screens/pemesanan_kuliner.dart';
+import 'package:sabumi3/screens/profile.dart';
+import 'package:sabumi3/screens/chat.dart';
+
 
 class Bottomnavbar extends StatelessWidget {
   const Bottomnavbar({super.key});
@@ -13,19 +17,28 @@ class Bottomnavbar extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.chat, color: Colors.black),
             onPressed: () {
-              print("Chat button pressed");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChatPage()),
+              );
             },
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart, color: Colors.black),
             onPressed: () {
-              print("Keranjang button pressed");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PemesananKuliner()),
+              );
             },
           ),
           IconButton(
             icon: Icon(Icons.account_circle, color: Colors.black),
             onPressed: () {
-              print("Profile button pressed");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
             },
           ),
         ],
