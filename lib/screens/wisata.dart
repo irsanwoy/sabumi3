@@ -33,56 +33,65 @@ class Wisata extends StatelessWidget {
                     textAlign: TextAlign.center, // Menambahkan teks agar berada di tengah
                   ),
                 ),
-                // Galeri Gambar 1
+                // Galeri Gambar 1 dengan sudut melengkung
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/savilage.jpeg', // Ganti dengan path gambar yang sesuai
-                    fit: BoxFit.cover,
-                    width: double.infinity, // Gambar akan mengisi lebar layar
-                    height: 200, // Atur tinggi gambar
-                  ),
-                ),
-                // Galeri Gambar 2
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/kamar.jpg', // Ganti dengan path gambar yang sesuai
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 200,
-                  ),
-                ),
-                // Galeri Gambar 3
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/tenda.png', // Ganti dengan path gambar yang sesuai
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 200,
-                  ),
-                ),
-                // Tombol Order
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => PemesananWisata()));
-                  },
-                  child: Text(
-                    'Order Disini',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                     backgroundColor: Color(0xFFF77437), // Ganti warna tombol sesuai kebutuhan
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16), // Radius sudut untuk gambar
+                    child: Image.asset(
+                      'assets/savilage.jpeg', // Ganti dengan path gambar yang sesuai
+                      fit: BoxFit.cover,
+                      width: 450, // Gambar akan mengisi lebar layar
+                      height: 200, // Atur tinggi gambar
                     ),
                   ),
                 ),
-              ),
+                // Galeri Gambar 2 dengan sudut melengkung
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16), // Radius sudut untuk gambar
+                    child: Image.asset(
+                      'assets/kamar.jpg', // Ganti dengan path gambar yang sesuai
+                      fit: BoxFit.cover,
+                      width: 450,
+                      height: 200,
+                    ),
+                  ),
+                ),
+                // Galeri Gambar 3 dengan sudut melengkung
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16), // Radius sudut untuk gambar
+                    child: Image.asset(
+                      'assets/tenda.png', // Ganti dengan path gambar yang sesuai
+                      fit: BoxFit.cover,
+                      width: 450,
+                      height: 200,
+                    ),
+                  ),
+                ),
+                // Tombol Order
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => PemesananWisata()));
+                    },
+                    child: Text(
+                      'Order Disini',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFF77437), // Ganti warna tombol sesuai kebutuhan
+                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                  ),
+                ),
                 // Tambahkan lebih banyak gambar sesuai kebutuhan
               ],
             ),

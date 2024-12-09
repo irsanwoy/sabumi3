@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # photo_view: ^0.13.0 # Sesuaikan dengan versi terbaru
+  # photo_view_gallery: ^0.13.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -64,6 +66,7 @@ flutter:
     - assets/bg.jpg
     - assets/bgds.jpg
     - assets/savilage.jpeg
+    - assets/savilage.png
     - assets/kamar.jpg
     - assets/tenda.png
     - assets/bumi_aki.png

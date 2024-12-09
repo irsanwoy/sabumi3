@@ -13,9 +13,9 @@ class Dashboard extends StatelessWidget {
       body: Center(
         child: Image.asset(
           'assets/bgds.jpg', // Gambar background
-          fit: BoxFit.fill,
-          width: 500,
-          height: double.infinity,
+          fit: BoxFit.fill, // Pastikan gambar mengisi layar sepenuhnya tanpa terpotong
+          width: MediaQuery.of(context).size.width, // Lebar mengikuti lebar layar
+          height: MediaQuery.of(context).size.height, // Tinggi mengikuti tinggi layar
         ),
       ),
       bottomNavigationBar: Bottomnavbar(), // Panggil Footer di sini

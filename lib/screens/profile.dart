@@ -30,7 +30,7 @@ class Profile extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 
-                // Nama pengguna
+                // Nama Pengguna
                 Text(
                   'Nama Pengguna',
                   style: TextStyle(
@@ -41,47 +41,63 @@ class Profile extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
 
-                // Nomor HP
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.phone, color: Colors.orange),
-                    SizedBox(width: 10),
-                    Text(
-                      '0812 3456 7890',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
+                // Info dalam Card
+                Card(
+                  elevation: 4,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  color: Colors.black54, // Memberi latar belakang gelap pada card untuk kontras
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        // Nomor HP
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(Icons.phone, color: Colors.orange),
+                            SizedBox(width: 10),
+                            Text(
+                              '0812 3456 7890',
+                              style: TextStyle(fontSize: 18, color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
 
-                // Alamat Pengguna
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.location_on, color: Colors.orange),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        'Jl. Raya No. 10, Jakarta Selatan, Indonesia',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
+                        // Alamat Pengguna
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(Icons.location_on, color: Colors.orange),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                'Jl. Raya No. 10, Jakarta Selatan, Indonesia',
+                                style: TextStyle(fontSize: 18, color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
 
-                // Metode Pembayaran
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(Icons.credit_card, color: Colors.orange),
-                    SizedBox(width: 10),
-                    Text(
-                      'VISA **** 1234',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                        // Metode Pembayaran
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(Icons.credit_card, color: Colors.orange),
+                            SizedBox(width: 10),
+                            Text(
+                              'VISA **** 1234',
+                              style: TextStyle(fontSize: 18, color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 30),
 
