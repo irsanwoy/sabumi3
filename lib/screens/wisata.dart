@@ -11,61 +11,64 @@ class Wisata extends StatelessWidget {
     return Scaffold(
       appBar: Navbar(), // Menampilkan Navbar
       body: SingleChildScrollView(
-        // Memungkinkan scroll untuk body
         child: Container(
-          // Menambahkan gambar sebagai latar belakang
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/bg.jpg'), // Ganti dengan path gambar latar belakang Anda
-              fit: BoxFit.cover, // Agar gambar menutupi seluruh area
+              fit: BoxFit.cover,
             ),
           ),
-          child: Center( // Menambahkan Center di sini
+          child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center, // Untuk memastikan konten berada di tengah secara vertikal
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Menampilkan teks di bagian atas
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Wisata\nSavillage', // Judul atau deskripsi lainnya dengan baris baru
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
-                    textAlign: TextAlign.center, // Menambahkan teks agar berada di tengah
-                  ),
-                ),
-                // Galeri Gambar 1 dengan sudut melengkung
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16), // Radius sudut untuk gambar
-                    child: Image.asset(
-                      'assets/savilage.jpeg', // Ganti dengan path gambar yang sesuai
-                      fit: BoxFit.cover,
-                      width: 450, // Gambar akan mengisi lebar layar
-                      height: 200, // Atur tinggi gambar
+                    style: TextStyle(
+                      fontSize: 28, // Ukuran font
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'LeckerliOne', // Menggunakan font Leckerli One
+                      color: Colors.white,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                // Galeri Gambar 2 dengan sudut melengkung
+                // Galeri Gambar 1
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16), // Radius sudut untuk gambar
+                    borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
-                      'assets/kamar.jpg', // Ganti dengan path gambar yang sesuai
+                      'assets/savilage.jpeg',
                       fit: BoxFit.cover,
                       width: 450,
                       height: 200,
                     ),
                   ),
                 ),
-                // Galeri Gambar 3 dengan sudut melengkung
+                // Galeri Gambar 2
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16), // Radius sudut untuk gambar
+                    borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
-                      'assets/tenda.png', // Ganti dengan path gambar yang sesuai
+                      'assets/kamar.jpg',
+                      fit: BoxFit.cover,
+                      width: 450,
+                      height: 200,
+                    ),
+                  ),
+                ),
+                // Galeri Gambar 3
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      'assets/tenda.png',
                       fit: BoxFit.cover,
                       width: 450,
                       height: 200,
@@ -81,10 +84,14 @@ class Wisata extends StatelessWidget {
                     },
                     child: Text(
                       'Order Disini',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(
+                        fontSize: 20, // Ukuran font
+                        fontFamily: 'LeckerliOne', // Menggunakan font Leckerli One
+                        color: Colors.white,
+                      ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFF77437), // Ganti warna tombol sesuai kebutuhan
+                      backgroundColor: Color(0xFFF77437),
                       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -92,13 +99,12 @@ class Wisata extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Tambahkan lebih banyak gambar sesuai kebutuhan
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: Bottomnavbar(), // Panggil Footer di sini
+      bottomNavigationBar: Bottomnavbar(),
     );
   }
 }

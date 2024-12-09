@@ -10,7 +10,9 @@ class Kuliner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Navbar(), // Menampilkan Navbar
+      
       body: Container(
+        
         // Menambahkan gambar background dengan BoxDecoration
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -20,8 +22,23 @@ class Kuliner extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
+         
           child: Column(
+            
             children: [
+               Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Kuliner\nBumi Aki', // Judul atau deskripsi lainnya dengan baris baru
+                    style: TextStyle(
+                      fontSize: 28, // Ukuran font
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'LeckerliOne', // Menggunakan font Leckerli One
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               // Gambar utama (Bumi Aki)
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -36,19 +53,12 @@ class Kuliner extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Review Kuliner Bumi Aki',
+                  'Menu Favorite',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      fontFamily: '',
                       color: Colors.white),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Nikmati kuliner terbaik yang ada di Bumi Aki, tempat yang sangat cocok untuk keluarga dan teman-teman.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
               SizedBox(height: 20),

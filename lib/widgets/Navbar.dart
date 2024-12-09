@@ -17,7 +17,6 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
           // Logo Sabumi di sebelah kiri dengan InkWell untuk beralih ke halaman Dashboard
           InkWell(
             onTap: () {
-              // Aksi saat logo ditekan
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Dashboard()),
@@ -36,24 +35,36 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  // Aksi untuk masuk ke screen Wisata
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Wisata()),
                   );
                 },
-                child: Text('Wisata', style: TextStyle(color: Colors.white)),
+                child: Text(
+                  'Wisata', 
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Lemonada', // Gunakan font Lemonada
+                    fontSize: 18, // Ukuran font sesuai keinginan
+                  ),
+                ),
               ),
               SizedBox(width: 20),
               TextButton(
                 onPressed: () {
-                  // Aksi untuk masuk ke screen Kuliner
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Kuliner()),
                   );
                 },
-                child: Text('Kuliner', style: TextStyle(color: Colors.white)),
+                child: Text(
+                  'Kuliner', 
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'Lemonada', // Gunakan font Lemonada
+                    fontSize: 18, // Ukuran font sesuai keinginan
+                  ),
+                ),
               ),
             ],
           ),
@@ -62,8 +73,6 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  // Mendefinisikan ukuran appBar
   @override
-  Size get preferredSize =>
-      Size.fromHeight(kToolbarHeight); // Ukuran default AppBar
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

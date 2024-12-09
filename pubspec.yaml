@@ -25,6 +25,7 @@ flutter:
     - assets/logo.png
     - assets/bg.jpg
     - assets/bgds.jpg
+    - assets/bgds2.png
     - assets/savilage.jpeg
     - assets/savilage.png
     - assets/kamar.jpg
@@ -40,3 +41,10 @@ flutter:
     - assets/kamar_superior.png
     - assets/tenda_keong.png
     - assets/tenda_dome.png
+  fonts:
+    - family: Lemonada
+      fonts:
+        - asset: assets/fonts/Lemonada-Regular.ttf
+    - family: LeckerliOne
+      fonts:
+        - asset: assets/fonts/LeckerliOne-Regular.ttf

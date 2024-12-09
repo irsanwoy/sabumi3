@@ -9,17 +9,17 @@ class Bottomnavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Color(0xFFF77437), // Warna background yang sama
+      color: Color(0xFFF77437), 
       child: Padding(
-        padding: const EdgeInsets.only(top: 5.0), // Menurunkan posisi ikon
+        padding: const EdgeInsets.only(top: 5.0), 
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             // Ikon Chat
             Padding(
-              padding: const EdgeInsets.only(top: 10.0), // Menyesuaikan padding vertikal
+              padding: const EdgeInsets.only(top: 10.0), 
               child: IconButton(
-                icon: Icon(Icons.chat, color: Colors.black, size: 30), // Sesuaikan ukuran
+                icon: Icon(Icons.chat, color: Colors.white, size: 30), 
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -31,9 +31,9 @@ class Bottomnavbar extends StatelessWidget {
             
             // Ikon Keranjang
             Padding(
-              padding: const EdgeInsets.only(top: 10.0), // Menyesuaikan padding vertikal
+              padding: const EdgeInsets.only(top: 10.0), 
               child: IconButton(
-                icon: Icon(Icons.shopping_cart, color: Colors.black, size: 30), // Sesuaikan ukuran
+                icon: Icon(Icons.shopping_cart, color: Colors.white, size: 30), 
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -45,9 +45,9 @@ class Bottomnavbar extends StatelessWidget {
             
             // Ikon Profile
             Padding(
-              padding: const EdgeInsets.only(top: 10.0), // Menyesuaikan padding vertikal
+              padding: const EdgeInsets.only(top: 10.0),
               child: IconButton(
-                icon: Icon(Icons.account_circle, color: Colors.black, size: 30), // Sesuaikan ukuran
+                icon: Icon(Icons.account_circle, color: Colors.white, size: 30), 
                 onPressed: () {
                   Navigator.push(
                     context,
