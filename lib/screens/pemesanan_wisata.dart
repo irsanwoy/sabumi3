@@ -13,7 +13,19 @@ class PemesananWisata extends StatelessWidget {
     return Scaffold(
       appBar: Navbar(),
 
-      body: ListView(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFF2C2C2C), // Warna gelap pertama (lebih gelap dari sebelumnya)
+              Color(0xFF505050), // Warna gelap kedua (lebih terang sedikit)
+            ],
+            begin: Alignment.topCenter,  // Mulai dari atas layar
+            end: Alignment.bottomCenter,  // Berakhir di bawah layar
+          ),
+        ),
+        child: ListView(
+        
         children: [
           kamarCard(
             context,
@@ -35,6 +47,31 @@ class PemesananWisata extends StatelessWidget {
           ),
         ],
       ),
+      ),
+
+      // body: ListView(
+        
+      //   children: [
+      //     kamarCard(
+      //       context,
+      //       'assets/kamar_superior.png',
+      //       'Kamar Deluxe',
+      //       'Rp 1.500.000',
+      //     ),
+      //     kamarCard(
+      //       context,
+      //       'assets/tenda_keong.png',
+      //       'Kamar Standard',
+      //       'Rp 1.000.000',
+      //     ),
+      //     kamarCard(
+      //       context,
+      //       'assets/tenda_dome.png',
+      //       'Kamar Suite',
+      //       'Rp 2.000.000',
+      //     ),
+      //   ],
+      // ),
       bottomNavigationBar: Bottomnavbar(),
     );
   }
