@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sabumi3/widgets/navbar.dart'; // Periksa path ini
 import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
+import 'package:sabumi3/screens/pemesanan_wisata.dart';
 
 class Wisata extends StatelessWidget {
   const Wisata({super.key});
@@ -67,9 +68,7 @@ class Wisata extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    // Aksi ketika tombol ditekan
-                    print("Order button pressed");
-                    // Anda bisa menambahkan navigasi atau aksi lain di sini
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => PemesananWisata()));
                   },
                   child: Text(
                     'Order Disini',

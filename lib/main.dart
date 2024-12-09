@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/splash_screen.dart';
-import 'screens/dashboard.dart';
+import 'screens/pemesanan_wisata.dart';
 void main() {
   runApp(const MyApp());
 }

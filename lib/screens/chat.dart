@@ -74,9 +74,10 @@ class _ChatPageState extends State<ChatPage> {
                   Expanded(
                     child: TextField(
                       controller: _controller,
+                      style: TextStyle(color: Colors.white), // Menetapkan warna teks menjadi putih
                       decoration: InputDecoration(
                         hintText: "Tulis pesan...",
-                        hintStyle: TextStyle(color: Colors.white),
+                        hintStyle: TextStyle(color: Colors.white), // Menetapkan warna hintText menjadi putih
                         filled: true,
                         fillColor: Colors.black.withOpacity(0.5),
                         border: OutlineInputBorder(

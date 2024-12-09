@@ -74,6 +74,9 @@ flutter:
     - assets/surabi.png
     - assets/mojito.png
     - assets/profile.png
+    - assets/kamar_superior.png
+    - assets/tenda_keong.png
+    - assets/tenda_dome.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
