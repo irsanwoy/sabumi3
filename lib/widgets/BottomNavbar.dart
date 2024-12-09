@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sabumi3/screens/pemesanan_kuliner.dart';
 import 'package:sabumi3/screens/profile.dart';
 import 'package:sabumi3/screens/chat.dart';
 import 'package:sabumi3/screens/keranjang.dart';
