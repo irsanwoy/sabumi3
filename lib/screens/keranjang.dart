@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sabumi3/providers/cart_provider.dart';
+import 'package:sabumi3/widgets/navbar.dart'; // Pastikan path ini benar
+import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
 
 
 class Keranjang extends StatelessWidget {
@@ -9,7 +11,7 @@ class Keranjang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Keranjang")),
+      appBar: Navbar(),
       body: Consumer<CartProvider>(
         builder: (context, cartProvider, child) {
           if (cartProvider.cartItems.isEmpty) {
@@ -51,6 +53,7 @@ class Keranjang extends StatelessWidget {
           ),
         ),
       ),
+      
     );
   }
 

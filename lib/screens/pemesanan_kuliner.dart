@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sabumi3/providers/cart_provider.dart';
+import 'package:sabumi3/widgets/navbar.dart'; // Pastikan path ini benar
+import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
 
 class PemesananKuliner extends StatefulWidget {
   const PemesananKuliner({super.key});
@@ -41,7 +43,7 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Pemesanan Kuliner")),
+      appBar: Navbar(),
       body: ListView(
         children: [
           ListTile(
@@ -98,6 +100,7 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
           ),
         ],
       ),
+      bottomNavigationBar: Bottomnavbar(),
     );
   }
 }

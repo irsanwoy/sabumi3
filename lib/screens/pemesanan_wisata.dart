@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sabumi3/widgets/Navbar.dart';
-import 'package:sabumi3/widgets/BottomNavbar.dart';
+import 'package:provider/provider.dart';
+import 'package:sabumi3/providers/cart_provider.dart';
+import 'package:sabumi3/widgets/navbar.dart'; // Pastikan path ini benar
+import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
+
 
 class PemesananWisata extends StatelessWidget {
   const PemesananWisata({super.key});
@@ -8,169 +11,62 @@ class PemesananWisata extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Navbar(),  // Navbar yang sudah Anda buat
+      appBar: Navbar(),
 
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/bg.jpg'), // Ganti dengan path gambar latar belakang Anda
-            fit: BoxFit.cover,
+      body: ListView(
+        children: [
+          kamarCard(
+            context,
+            'assets/kamar_superior.png',
+            'Kamar Deluxe',
+            'Rp 1.500.000',
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Judul Halaman
-              Text(
-                'Savillage Ticket',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 20),
-
-              // Daftar kamar (ListView untuk menampilkan beberapa pilihan)
-              Expanded(
-                child: ListView(
-                  children: [
-                    kamarCard(
-                      context,
-                      'assets/kamar_superior.png', // Gambar kamar
-                      'Kamar Deluxe', // Nama kamar
-                      'Kamar dengan fasilitas mewah dan pemandangan indah.', // Deskripsi kamar
-                      'Rp 1.500.000', // Harga kamar
-                    ),
-                    kamarCard(
-                      context,
-                      'assets/tenda_keong.png', // Gambar kamar
-                      'Kamar Standard', // Nama kamar
-                      'Kamar nyaman dengan fasilitas standar yang lengkap.', // Deskripsi kamar
-                      'Rp 1.000.000', // Harga kamar
-                    ),
-                    kamarCard(
-                      context,
-                      'assets/tenda_dome.png', // Gambar kamar
-                      'Kamar Suite', // Nama kamar
-                      'Kamar dengan ruang tamu pribadi dan jacuzzi.', // Deskripsi kamar
-                      'Rp 2.000.000', // Harga kamar
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          kamarCard(
+            context,
+            'assets/tenda_keong.png',
+            'Kamar Standard',
+            'Rp 1.000.000',
           ),
-        ),
+          kamarCard(
+            context,
+            'assets/tenda_dome.png',
+            'Kamar Suite',
+            'Rp 2.000.000',
+          ),
+        ],
       ),
-
-      bottomNavigationBar: Bottomnavbar(), // Footer
+      bottomNavigationBar: Bottomnavbar(),
     );
   }
 
-  // Widget untuk card kamar
-  Widget kamarCard(BuildContext context, String imagePath, String roomName, String description, String price) {
+  Widget kamarCard(BuildContext context, String imagePath, String roomName, String price) {
     return Card(
-      elevation: 5,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          children: [
-            // Gambar Kamar
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                imagePath,
-                width: 120,
-                height: 120,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(width: 20),
+      margin: EdgeInsets.all(10),
+      child: ListTile(
+        leading: Image.asset(imagePath, width: 50, height: 50),
+        title: Text(roomName),
+        subtitle: Text(price),
+        trailing: IconButton(
+          icon: Icon(Icons.add_shopping_cart),
+          onPressed: () {
+            // Bersihkan harga sebelum menambahkannya ke keranjang
+            String cleanedPrice = price.replaceAll("Rp", "").replaceAll(".", "").trim();
 
-            // Informasi Kamar (Nama, Deskripsi, Harga)
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    roomName,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  // Deskripsi dan Ikon
-                  _buildDescriptionWithIcon(Icons.fastfood, "Termasuk Makan Pagi Untuk 2 Orang", Colors.orange),
-                  SizedBox(height: 5),
-                  _buildDescriptionWithIcon(Icons.wifi, "Wi-Fi Gratis", Colors.blue),
-                  SizedBox(height: 5),
-                  _buildDescriptionWithIcon(Icons.smoking_rooms, "Boleh Merokok", Colors.green),
-                  SizedBox(height: 10),
+            // Tambahkan item ke keranjang
+            Provider.of<CartProvider>(context, listen: false).addToCart(
+              roomName,
+              imagePath,
+              cleanedPrice, // Harga sudah bersih
+              1, // Jumlah item
+            );
 
-                  // Harga Kamar
-                  Text(
-                    price,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-
-                  // Tombol Pesan
-                  ElevatedButton(
-                    onPressed: () {
-                      // Aksi saat tombol Pesan ditekan
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue, // Warna tombol
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                    ),
-                    child: Text(
-                      'Pesan Kamar',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            // Tampilkan Snackbar sebagai konfirmasi
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('$roomName berhasil ditambahkan ke keranjang')),
+            );
+          },
         ),
       ),
-    );
-  }
-
-  // Widget untuk menampilkan deskripsi dengan ikon
-  Widget _buildDescriptionWithIcon(IconData icon, String text, Color iconColor) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          color: iconColor,
-          size: 20,
-        ),
-        SizedBox(width: 10),
-        Expanded(
-          child: Text(
-            text,
-            style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
     );
   }
 }
