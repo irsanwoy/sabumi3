@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sabumi3/providers/cart_provider.dart';
-import 'package:sabumi3/widgets/navbar.dart'; // Pastikan path ini benar
-import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
+import 'package:sabumi3/widgets/navbar.dart'; 
 
 
 class Keranjang extends StatelessWidget {
