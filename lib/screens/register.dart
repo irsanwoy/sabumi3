@@ -7,55 +7,52 @@ class Register extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        fit: StackFit.expand, // Mengisi seluruh layar
+        fit: StackFit.expand,
         children: [
-          // Gambar latar belakang
           Image.asset(
             'assets/bg.jpg',
-            fit: BoxFit.cover, // Menyesuaikan gambar dengan layar
+            fit: BoxFit.cover,
           ),
-          // Konten di atas gambar latar belakang
           Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Logo di atas
                   Image.asset(
                     'assets/logo.png',
-                    height: 300, // Ukuran logo
+                    height: 300,
                   ),
                   SizedBox(height: 20),
-                  // Form Register
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     child: Column(
                       children: [
-                        // Input Username
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'Username',
                             labelStyle: TextStyle(color: Colors.white),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.8),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                             prefixIcon: Icon(Icons.person),
                           ),
                         ),
                         SizedBox(height: 20),
-                        // Input Email
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'Email',
                             labelStyle: TextStyle(color: Colors.white),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.8),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                             prefixIcon: Icon(Icons.email),
                           ),
                         ),
                         SizedBox(height: 20),
-                        // Input Password
                         TextField(
                           obscureText: true,
                           decoration: InputDecoration(
@@ -63,33 +60,43 @@ class Register extends StatelessWidget {
                             labelStyle: TextStyle(color: Colors.white),
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.8),
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                             prefixIcon: Icon(Icons.lock),
                           ),
                         ),
                         SizedBox(height: 30),
-                        // Tombol Daftar
                         ElevatedButton(
                           onPressed: () {
-                            // Aksi saat tombol daftar ditekan
                             print('Registrasi Button Pressed');
                           },
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                            backgroundColor: Colors.blueAccent,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 80, vertical: 15),
+                            backgroundColor: Colors.orange,
                           ),
-                          child: Text('Daftar', style: TextStyle(fontSize: 18)),
+                          child: Text(
+                            'Daftar',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontFamily: 'Fredoka',
+                            ),
+                          ),
                         ),
                         SizedBox(height: 20),
-                        // Tombol untuk pergi ke halaman login
                         TextButton(
                           onPressed: () {
-                            // Aksi saat tombol login ditekan
                             Navigator.pop(context);
                           },
                           child: Text(
                             'Sudah punya akun? Login sekarang',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: 'Fredoka',
+                            ),
                           ),
                         ),
                       ],

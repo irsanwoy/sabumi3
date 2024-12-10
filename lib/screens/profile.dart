@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sabumi3/widgets/navbar.dart'; // Periksa path ini
+import 'package:sabumi3/widgets/navbar.dart'; 
 import 'package:sabumi3/widgets/BottomNavbar.dart';
 
 class Profile extends StatelessWidget {
@@ -8,14 +8,19 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Navbar(), // Navbar di atas
+      appBar: Navbar(),
 
       body: SingleChildScrollView(
         child: Container(
+          height: double.infinity,  
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/bg.jpg'), // Ganti dengan path gambar latar belakang yang sesuai
-              fit: BoxFit.cover, // Membuat gambar memenuhi seluruh latar belakang
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF2C2C2C),
+                Color(0xFF505050),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
           child: Padding(
@@ -23,37 +28,31 @@ class Profile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Gambar profil
                 CircleAvatar(
                   radius: 70,
-                  backgroundImage: AssetImage('assets/profile.png'), // Ganti dengan gambar profil yang sesuai
+                  backgroundImage: AssetImage('assets/profile.png'),
                 ),
                 SizedBox(height: 20),
-                
-                // Nama Pengguna
                 Text(
                   'Nama Pengguna',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white, // Ganti warna teks sesuai kebutuhan
+                    color: Colors.white,
                   ),
                 ),
                 SizedBox(height: 10),
-
-                // Info dalam Card
                 Card(
                   elevation: 4,
                   margin: EdgeInsets.symmetric(vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  color: Colors.black54, // Memberi latar belakang gelap pada card untuk kontras
+                  color: Colors.black54,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        // Nomor HP
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -66,8 +65,6 @@ class Profile extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 20),
-
-                        // Alamat Pengguna
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -82,8 +79,6 @@ class Profile extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 20),
-
-                        // Metode Pembayaran
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -100,15 +95,12 @@ class Profile extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30),
-
-                // Tombol Logout dengan ikon
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.exit_to_app, size: 30, color: Colors.red), // Ikon logout
+                      icon: Icon(Icons.exit_to_app, size: 30, color: Colors.red),
                       onPressed: () {
-                        // Tambahkan aksi logout di sini
                         print("Logout clicked");
                       },
                     ),
@@ -123,8 +115,7 @@ class Profile extends StatelessWidget {
           ),
         ),
       ),
-
-      bottomNavigationBar: Bottomnavbar(), // Panggil Footer di sini
+      bottomNavigationBar: Bottomnavbar(),
     );
   }
 }

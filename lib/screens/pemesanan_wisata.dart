@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sabumi3/providers/cart_provider.dart';
-import 'package:sabumi3/widgets/navbar.dart'; // Pastikan path ini benar
-import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
-
+import 'package:sabumi3/widgets/navbar.dart';
+import 'package:sabumi3/widgets/BottomNavbar.dart';
 
 class PemesananWisata extends StatelessWidget {
   const PemesananWisata({super.key});
@@ -12,66 +11,40 @@ class PemesananWisata extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Navbar(),
-
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFF2C2C2C), // Warna gelap pertama (lebih gelap dari sebelumnya)
-              Color(0xFF505050), // Warna gelap kedua (lebih terang sedikit)
+              Color(0xFF2C2C2C),
+              Color(0xFF505050),
             ],
-            begin: Alignment.topCenter,  // Mulai dari atas layar
-            end: Alignment.bottomCenter,  // Berakhir di bawah layar
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: ListView(
-        
-        children: [
-          kamarCard(
-            context,
-            'assets/kamar_superior.png',
-            'Kamar Deluxe',
-            'Rp 1.500.000',
-          ),
-          kamarCard(
-            context,
-            'assets/tenda_keong.png',
-            'Kamar Standard',
-            'Rp 1.000.000',
-          ),
-          kamarCard(
-            context,
-            'assets/tenda_dome.png',
-            'Kamar Suite',
-            'Rp 2.000.000',
-          ),
-        ],
+          children: [
+            kamarCard(
+              context,
+              'assets/kamar_superior.png',
+              'Kamar Deluxe',
+              'Rp 1.500.000',
+            ),
+            kamarCard(
+              context,
+              'assets/tenda_keong.png',
+              'Kamar Standard',
+              'Rp 1.000.000',
+            ),
+            kamarCard(
+              context,
+              'assets/tenda_dome.png',
+              'Kamar Suite',
+              'Rp 2.000.000',
+            ),
+          ],
+        ),
       ),
-      ),
-
-      // body: ListView(
-        
-      //   children: [
-      //     kamarCard(
-      //       context,
-      //       'assets/kamar_superior.png',
-      //       'Kamar Deluxe',
-      //       'Rp 1.500.000',
-      //     ),
-      //     kamarCard(
-      //       context,
-      //       'assets/tenda_keong.png',
-      //       'Kamar Standard',
-      //       'Rp 1.000.000',
-      //     ),
-      //     kamarCard(
-      //       context,
-      //       'assets/tenda_dome.png',
-      //       'Kamar Suite',
-      //       'Rp 2.000.000',
-      //     ),
-      //   ],
-      // ),
       bottomNavigationBar: Bottomnavbar(),
     );
   }
@@ -80,24 +53,28 @@ class PemesananWisata extends StatelessWidget {
     return Card(
       margin: EdgeInsets.all(10),
       child: ListTile(
-        leading: Image.asset(imagePath, width: 50, height: 50),
-        title: Text(roomName),
-        subtitle: Text(price),
+        leading: Image.asset(imagePath, width: 70, height: 70),
+        title: Text(
+          roomName,
+          style: TextStyle(fontSize: 24),
+        ),
+        subtitle: Text(
+          price,
+          style: TextStyle(fontSize: 20),
+        ),
         trailing: IconButton(
-          icon: Icon(Icons.add_shopping_cart),
+          icon: Icon(
+            Icons.add_shopping_cart,
+            size: 35,
+          ),
           onPressed: () {
-            // Bersihkan harga sebelum menambahkannya ke keranjang
             String cleanedPrice = price.replaceAll("Rp", "").replaceAll(".", "").trim();
-
-            // Tambahkan item ke keranjang
             Provider.of<CartProvider>(context, listen: false).addToCart(
               roomName,
               imagePath,
-              cleanedPrice, // Harga sudah bersih
-              1, // Jumlah item
+              cleanedPrice,
+              1,
             );
-
-            // Tampilkan Snackbar sebagai konfirmasi
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('$roomName berhasil ditambahkan ke keranjang')),
             );

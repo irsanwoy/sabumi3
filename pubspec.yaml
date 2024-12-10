@@ -48,3 +48,6 @@ flutter:
     - family: LeckerliOne
       fonts:
         - asset: assets/fonts/LeckerliOne-Regular.ttf
+    - family: Fredoka
+      fonts:
+        - asset: assets/fonts/Fredoka-Regular.ttf
