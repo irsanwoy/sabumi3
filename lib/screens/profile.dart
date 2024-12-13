@@ -112,7 +112,6 @@ class Profile extends StatelessWidget {
             ),
           ),
           
-          // Menambahkan Bottom Navbar di bawah
           Bottomnavbar(),
         ],
       ),
