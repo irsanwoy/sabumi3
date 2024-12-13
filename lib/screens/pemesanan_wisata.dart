@@ -23,24 +23,34 @@ class PemesananWisata extends StatelessWidget {
           ),
         ),
         child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           children: [
-            kamarCard(
+            buildRoomCard(
               context,
               'assets/kamar_superior.png',
-              'Kamar Deluxe',
-              'Rp 1.500.000',
+              'Clamping Superior',
+              'Kamar Superior Tempat Tidur King atau Single + Pemandangan Gunung',
+              'Termasuk Makan Pagi untuk 3 Orang',
+              'IDR 1,067,138',
+              'Pesan',
             ),
-            kamarCard(
+            buildRoomCard(
               context,
               'assets/tenda_keong.png',
-              'Kamar Standard',
-              'Rp 1.000.000',
+              'Tenda Keong',
+              'Kamar Keluarga dengan Ranjang 2 Double Pemandangan Gunung',
+              'Termasuk Makan Pagi untuk 4 Orang',
+              'IDR 784,690',
+              'Pesan',
             ),
-            kamarCard(
+            buildRoomCard(
               context,
               'assets/tenda_dome.png',
-              'Kamar Suite',
-              'Rp 2.000.000',
+              'Tenda Dome',
+              'Kamar dengan Ranjang Single atau Double Pemandangan Gunung',
+              'Termasuk Makan Pagi untuk 4 Orang',
+              'IDR 364,655',
+              'Pesan',
             ),
           ],
         ),
@@ -49,36 +59,99 @@ class PemesananWisata extends StatelessWidget {
     );
   }
 
-  Widget kamarCard(BuildContext context, String imagePath, String roomName, String price) {
+  Widget buildRoomCard(
+    BuildContext context,
+    String imagePath,
+    String title,
+    String description,
+    String breakfastInfo,
+    String price,
+    String buttonText,
+  ) {
     return Card(
-      margin: EdgeInsets.all(10),
-      child: ListTile(
-        leading: Image.asset(imagePath, width: 70, height: 70),
-        title: Text(
-          roomName,
-          style: TextStyle(fontSize: 24),
-        ),
-        subtitle: Text(
-          price,
-          style: TextStyle(fontSize: 20),
-        ),
-        trailing: IconButton(
-          icon: Icon(
-            Icons.add_shopping_cart,
-            size: 35,
-          ),
-          onPressed: () {
-            String cleanedPrice = price.replaceAll("Rp", "").replaceAll(".", "").trim();
-            Provider.of<CartProvider>(context, listen: false).addToCart(
-              roomName,
-              imagePath,
-              cleanedPrice,
-              1,
-            );
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('$roomName berhasil ditambahkan ke keranjang')),
-            );
-          },
+      color: Color(0xFF3A3A3A),
+      margin: const EdgeInsets.only(bottom: 15),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                imagePath,
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    description,
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    breakfastInfo,
+                    style: const TextStyle(
+                      color: Colors.white54,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    price,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                String cleanedPrice = price.replaceAll("IDR", "").replaceAll(",", "").trim();
+                Provider.of<CartProvider>(context, listen: false).addToCart(
+                  title,
+                  imagePath,
+                  cleanedPrice,
+                  1,
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('$title berhasil ditambahkan ke keranjang')),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: Text(
+                buttonText,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
         ),
       ),
     );
