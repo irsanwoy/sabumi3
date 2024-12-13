@@ -50,6 +50,7 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                   decoration: TextDecoration.underline,
+                  fontFamily: 'LeckerliOne',
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -59,7 +60,7 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
               children: [
                 buildMenuCard(
                   context,
-                  'assets/es_campur.png',
+                  'assets/menu1.png',
                   'ES Campur',
                   'Rp 16,000',
                 ),
@@ -71,19 +72,7 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
+            
             Wrap(
               spacing: 15,
               runSpacing: 15,
@@ -121,7 +110,7 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
                 ),
                 buildMenuCard(
                   context,
-                  'assets/lemontea.png',
+                  'assets/lemon_tea.png',
                   'Lemon Tea',
                   'Rp 10,000',
                 ),
@@ -136,7 +125,7 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
 
   Widget buildMenuCard(BuildContext context, String imagePath, String name, String price) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.4, // 40% of screen width
+      width: MediaQuery.of(context).size.width * 0.4, 
       decoration: BoxDecoration(
         color: Color(0xFF3A3A3A),
         borderRadius: BorderRadius.circular(10),

@@ -85,8 +85,8 @@ class Wisata extends StatelessWidget {
                     child: Text(
                       'Order Disini',
                       style: TextStyle(
-                        fontSize: 20, // Ukuran font
-                        fontFamily: 'LeckerliOne', // Menggunakan font Leckerli One
+                        fontSize: 20, 
+                        fontFamily: 'LeckerliOne',
                         color: Colors.black,
                       ),
                     ),

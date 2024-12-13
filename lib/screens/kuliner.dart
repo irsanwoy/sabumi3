@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sabumi3/widgets/navbar.dart'; // Periksa path ini
-import 'package:sabumi3/widgets/BottomNavbar.dart'; // Pastikan path ini benar
+import 'package:sabumi3/widgets/navbar.dart';
+import 'package:sabumi3/widgets/BottomNavbar.dart';
 import 'package:sabumi3/screens/pemesanan_kuliner.dart';
 
 class Kuliner extends StatelessWidget {
@@ -10,9 +10,8 @@ class Kuliner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Navbar(), // Menampilkan Navbar
-      
+
       body: Container(
-        
         // Menambahkan gambar background dengan BoxDecoration
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -22,23 +21,21 @@ class Kuliner extends StatelessWidget {
           ),
         ),
         child: SingleChildScrollView(
-         
           child: Column(
-            
             children: [
-               Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Kuliner\nBumi Aki', // Judul atau deskripsi lainnya dengan baris baru
-                    style: TextStyle(
-                      fontSize: 28, // Ukuran font
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'LeckerliOne', // Menggunakan font Leckerli One
-                      color: Colors.white,
-                    ),
-                    textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Kuliner\nBumi Aki', // Judul atau deskripsi lainnya dengan baris baru
+                  style: TextStyle(
+                    fontSize: 28, // Ukuran font
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'LeckerliOne', // Menggunakan font Leckerli One
+                    color: Colors.white,
                   ),
+                  textAlign: TextAlign.center,
                 ),
+              ),
               // Gambar utama (Bumi Aki)
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -106,13 +103,18 @@ class Kuliner extends StatelessWidget {
                     // Aksi ketika tombol ditekan
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => PemesananKuliner()),
+                      MaterialPageRoute(
+                          builder: (context) => PemesananKuliner()),
                     );
                     // Anda bisa menambahkan navigasi atau aksi lain di sini
                   },
                   child: Text(
                     'Order Disini',
-                    style: TextStyle(fontSize: 18, color: Colors.black),
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontFamily: 'LeckerliOne',
+                    ),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(
