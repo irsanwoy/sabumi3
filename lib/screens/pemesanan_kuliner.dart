@@ -12,38 +12,18 @@ class PemesananKuliner extends StatefulWidget {
 }
 
 class _PemesananKulinerState extends State<PemesananKuliner> {
-  int _itemCount1 = 0;
-  int _itemCount2 = 0;
-  int _itemCount3 = 0;
-
-  void _incrementItem(int itemIndex) {
-    setState(() {
-      if (itemIndex == 1) _itemCount1++;
-      if (itemIndex == 2) _itemCount2++;
-      if (itemIndex == 3) _itemCount3++;
-    });
-  }
-
-  void _decrementItem(int itemIndex) {
-    setState(() {
-      if (itemIndex == 1 && _itemCount1 > 0) _itemCount1--;
-      if (itemIndex == 2 && _itemCount2 > 0) _itemCount2--;
-      if (itemIndex == 3 && _itemCount3 > 0) _itemCount3--;
-    });
-  }
-
-  void _addToCart(String name, String imagePath, String price, int quantity) {
-    if (quantity > 0) {
-      Provider.of<CartProvider>(context, listen: false).addToCart(
-        name,
-        imagePath,
-        price.replaceAll(",", ""),
-        quantity,
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('$name berhasil ditambahkan ke keranjang')),
-      );
-    }
+  void _addToCart(String name, String imagePath, String price) {
+    // Membersihkan string harga
+    String cleanedPrice = price.replaceAll(RegExp(r'[^\d]'), ''); // Hanya menyisakan angka
+    Provider.of<CartProvider>(context, listen: false).addToCart(
+      name,
+      imagePath,
+      cleanedPrice,
+      1,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('$name berhasil ditambahkan ke keranjang')),
+    );
   }
 
   @override
@@ -51,187 +31,166 @@ class _PemesananKulinerState extends State<PemesananKuliner> {
     return Scaffold(
       appBar: Navbar(),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color(0xFF2C2C2C),
-              Color(0xFF505050),
-            ],
+            colors: [Color(0xFF2C2C2C), Color(0xFF505050)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
         child: ListView(
+          padding: const EdgeInsets.all(15),
           children: [
-            ListTile(
-              leading: Image.asset('assets/ayambakar.png'),
-              title: const Text(
-                'Ayam Bakar',
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                'Best Menu',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
                 ),
-              ),
-              subtitle: const Text(
-                'Rp 20,000',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () => _decrementItem(1),
-                  ),
-                  Text(
-                    '$_itemCount1',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () => _incrementItem(1),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      _addToCart('Ayam Bakar', 'assets/ayambakar.png', '20,000', _itemCount1);
-                    },
-                  ),
-                ],
+                textAlign: TextAlign.center,
               ),
             ),
-            ListTile(
-              leading: Image.asset('assets/nasiliwet.png'),
-              title: const Text(
-                'Nasi Liwet',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                buildMenuCard(
+                  context,
+                  'assets/es_campur.png',
+                  'ES Campur',
+                  'Rp 16,000',
+                ),
+                buildMenuCard(
+                  context,
+                  'assets/sop_iga.png',
+                  'Sop Iga',
+                  'Rp 67,000',
+                ),
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: Text(
+                'Menu',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.underline,
                 ),
-              ),
-              subtitle: const Text(
-                'Rp 25,000',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () => _decrementItem(2),
-                  ),
-                  Text(
-                    '$_itemCount2',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () => _incrementItem(2),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      _addToCart('Nasi Liwet', 'assets/nasiliwet.png', '25,000', _itemCount2);
-                    },
-                  ),
-                ],
+                textAlign: TextAlign.center,
               ),
             ),
-            ListTile(
-              leading: Image.asset('assets/mojito.png'),
-              title: const Text(
-                'Mojito',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+            Wrap(
+              spacing: 15,
+              runSpacing: 15,
+              alignment: WrapAlignment.spaceBetween,
+              children: [
+                buildMenuCard(
+                  context,
+                  'assets/ayambakar.png',
+                  'Ayam Bakar',
+                  'Rp 45,000',
                 ),
-              ),
-              subtitle: const Text(
-                'Rp 10,000',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
+                buildMenuCard(
+                  context,
+                  'assets/nasiliwet.png',
+                  'Nasi Liwet',
+                  'Rp 70,000',
                 ),
-              ),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.remove,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () => _decrementItem(3),
-                  ),
-                  Text(
-                    '$_itemCount3',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () => _incrementItem(3),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Icons.shopping_cart,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      _addToCart('Mojito', 'assets/mojito.png', '10,000', _itemCount3);
-                    },
-                  ),
-                ],
-              ),
+                buildMenuCard(
+                  context,
+                  'assets/surabi.png',
+                  'Surabi',
+                  'Rp 15,000',
+                ),
+                buildMenuCard(
+                  context,
+                  'assets/gurame.png',
+                  'Gurame Goreng',
+                  'Rp 55,000',
+                ),
+                buildMenuCard(
+                  context,
+                  'assets/mojito.png',
+                  'Mojito',
+                  'Rp 10,000',
+                ),
+                buildMenuCard(
+                  context,
+                  'assets/lemontea.png',
+                  'Lemon Tea',
+                  'Rp 10,000',
+                ),
+              ],
             ),
           ],
         ),
       ),
       bottomNavigationBar: Bottomnavbar(),
+    );
+  }
+
+  Widget buildMenuCard(BuildContext context, String imagePath, String name, String price) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.4, // 40% of screen width
+      decoration: BoxDecoration(
+        color: Color(0xFF3A3A3A),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+            child: Image.asset(
+              imagePath,
+              width: double.infinity,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  price,
+                  style: const TextStyle(
+                    color: Colors.green,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    _addToCart(name, imagePath, price);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: const CircleBorder(),
+                  ),
+                  child: const Icon(Icons.add, color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
