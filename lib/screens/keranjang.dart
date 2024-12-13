@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sabumi3/providers/cart_provider.dart';
-import 'package:sabumi3/widgets/navbar.dart'; 
+import 'package:sabumi3/widgets/navbar.dart';
 
 class Keranjang extends StatelessWidget {
   const Keranjang({super.key});
@@ -11,36 +11,32 @@ class Keranjang extends StatelessWidget {
     return Scaffold(
       appBar: Navbar(),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFF2C2C2C), // Warna gelap pertama (lebih gelap dari sebelumnya)
-              Color(0xFF505050), // Warna gelap kedua (lebih terang sedikit)
+              Color(0xFF2C2C2C),
+              Color(0xFF505050),
             ],
-            begin: Alignment.topCenter,  // Mulai dari atas layar
-            end: Alignment.bottomCenter,  // Berakhir di bawah layar
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Consumer<CartProvider>(
           builder: (context, cartProvider, child) {
             if (cartProvider.cartItems.isEmpty) {
               return const Center(
-                child: Text("Keranjang Anda Kosong", style: TextStyle(color: Colors.white, fontSize: 18)),
+                child: Text(
+                  "Keranjang Anda Kosong",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
               );
             }
             return ListView.builder(
+              padding: const EdgeInsets.all(16),
               itemCount: cartProvider.cartItems.length,
               itemBuilder: (context, index) {
                 final item = cartProvider.cartItems[index];
-                return ListTile(
-                  leading: Image.asset(item['imagePath']),
-                  title: Text(item['name'], style: const TextStyle(color: Colors.white)),
-                  subtitle: Text('Rp ${item['price']} x ${item['quantity']}', style: const TextStyle(color: Colors.white)),
-                  trailing: Text(
-                    'Rp ${(double.parse(item['price']) * item['quantity']).toStringAsFixed(2)}',
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                );
+                return _buildCartItem(context, cartProvider, item, index);
               },
             );
           },
@@ -58,11 +54,90 @@ class Keranjang extends StatelessWidget {
                 style: const TextStyle(fontSize: 18, color: Colors.white),
               ),
               ElevatedButton(
-                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                ),
+                onPressed: () {
+                  _showCheckoutDialog(context);
+                },
                 child: const Text("Checkout"),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCartItem(BuildContext context, CartProvider cartProvider, Map<String, dynamic> item, int index) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      color: const Color(0xFF3A3A3A),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                item['imagePath'],
+                width: 70,
+                height: 70,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    item['name'],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    'Rp ${item['price']}',
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    cartProvider.updateQuantity(index, item['quantity'] - 1);
+                  },
+                  icon: const Icon(Icons.remove_circle, color: Colors.white),
+                ),
+                Text(
+                  '${item['quantity']}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    cartProvider.updateQuantity(index, item['quantity'] + 1);
+                  },
+                  icon: const Icon(Icons.add_circle, color: Colors.white),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
@@ -74,6 +149,34 @@ class Keranjang extends StatelessWidget {
     for (var item in cartProvider.cartItems) {
       total += double.parse(item['price']) * item['quantity'];
     }
-    return 'Rp ${total.toStringAsFixed(2)}';
+    return 'Rp ${total.toStringAsFixed(0)}';
+  }
+
+  void _showCheckoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFF3A3A3A),
+        title: const Text(
+          "Pesanan Diproses",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        content: const Text(
+          "Pesanan diproses, siapin duitnya ya adick adick :)",
+          style: TextStyle(color: Colors.white70),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text(
+              "OK",
+              style: TextStyle(color: Colors.green),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

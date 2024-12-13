@@ -50,4 +50,19 @@ class CartProvider extends ChangeNotifier {
     _saveCartToPrefs();
     notifyListeners();
   }
+
+  // Fungsi baru: Memperbarui kuantitas item di keranjang
+  void updateQuantity(int index, int newQuantity) {
+    if (index >= 0 && index < _cartItems.length) {
+      if (newQuantity <= 0) {
+        // Hapus item jika kuantitas menjadi 0
+        _cartItems.removeAt(index);
+      } else {
+        // Perbarui kuantitas
+        _cartItems[index]['quantity'] = newQuantity;
+      }
+      _saveCartToPrefs();
+      notifyListeners();
+    }
+  }
 }

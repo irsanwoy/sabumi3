@@ -112,7 +112,7 @@ class Kuliner extends StatelessWidget {
                   },
                   child: Text(
                     'Order Disini',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(
