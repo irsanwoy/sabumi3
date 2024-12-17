@@ -12,11 +12,11 @@ class Kuliner extends StatelessWidget {
       appBar: Navbar(), // Menampilkan Navbar
 
       body: Container(
-        // Menambahkan gambar background dengan BoxDecoration
+        width: double.infinity,  // Menjamin lebar penuh
+        height: MediaQuery.of(context).size.height,  // Mengatur tinggi penuh layar
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-                'assets/bg.jpg'), // Ganti dengan path gambar background Anda
+            image: AssetImage('assets/bg.jpg'), // Ganti dengan path gambar background Anda
             fit: BoxFit.cover, // Menyesuaikan gambar dengan ukuran layar
           ),
         ),
@@ -71,8 +71,7 @@ class Kuliner extends StatelessWidget {
                       height: 150,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(
-                              'assets/menu1.png'), // Ganti dengan path gambar menu 1
+                          image: AssetImage('assets/menu1.png'), // Ganti dengan path gambar menu 1
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(10),
@@ -84,8 +83,7 @@ class Kuliner extends StatelessWidget {
                       height: 150,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(
-                              'assets/menu2.png'), // Ganti dengan path gambar menu 2
+                          image: AssetImage('assets/menu2.png'), // Ganti dengan path gambar menu 2
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(10),
@@ -112,13 +110,12 @@ class Kuliner extends StatelessWidget {
                     'Order Disini',
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.black,
+                      color: Colors.white,
                       fontFamily: 'LeckerliOne',
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(
-                        0xFFF77437), // Ganti warna tombol sesuai kebutuhan
+                    backgroundColor: Color(0xFFF77437), // Ganti warna tombol sesuai kebutuhan
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),

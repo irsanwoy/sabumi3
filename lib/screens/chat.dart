@@ -33,7 +33,7 @@ class _ChatPageState extends State<ChatPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/bg.jpg'), // Ganti dengan gambar latar belakang chat
+            image: AssetImage('assets/bg.jpg'),
             fit: BoxFit.cover,
           ),
         ),

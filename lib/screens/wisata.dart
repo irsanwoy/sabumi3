@@ -87,7 +87,7 @@ class Wisata extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 20, 
                         fontFamily: 'LeckerliOne',
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(

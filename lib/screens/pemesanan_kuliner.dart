@@ -13,8 +13,7 @@ class PemesananKuliner extends StatefulWidget {
 
 class _PemesananKulinerState extends State<PemesananKuliner> {
   void _addToCart(String name, String imagePath, String price) {
-    // Membersihkan string harga
-    String cleanedPrice = price.replaceAll(RegExp(r'[^\d]'), ''); // Hanya menyisakan angka
+    String cleanedPrice = price.replaceAll(RegExp(r'[^\d]'), ''); 
     Provider.of<CartProvider>(context, listen: false).addToCart(
       name,
       imagePath,

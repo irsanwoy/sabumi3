@@ -7,23 +7,7 @@ class CartProvider extends ChangeNotifier {
 
   List<Map<String, dynamic>> get cartItems => _cartItems;
 
-  // Menyimpan data keranjang
-  void _saveCartToPrefs() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('cart', json.encode(_cartItems));
-  }
-
-  // Memuat data keranjang
-  Future<void> loadCartFromPrefs() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? cartData = prefs.getString('cart');
-    if (cartData != null) {
-      _cartItems = List<Map<String, dynamic>>.from(json.decode(cartData));
-      notifyListeners();
-    }
-  }
-
-  // Menambah item ke keranjang
+    // Menambah item ke keranjang
   void addToCart(String name, String imagePath, String price, int quantity) async {
     final existingItemIndex = _cartItems.indexWhere((item) => item['name'] == name);
 
@@ -44,14 +28,7 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Menghapus semua item dari keranjang
-  void clearCart() async {
-    _cartItems.clear();
-    _saveCartToPrefs();
-    notifyListeners();
-  }
-
-  // Fungsi baru: Memperbarui kuantitas item di keranjang
+    // Memperbarui kuantitas item di keranjang
   void updateQuantity(int index, int newQuantity) {
     if (index >= 0 && index < _cartItems.length) {
       if (newQuantity <= 0) {
@@ -65,4 +42,35 @@ class CartProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+   // Menghapus semua item dari keranjang
+  void clearCart() async {
+    _cartItems.clear();
+    _saveCartToPrefs();
+    notifyListeners();
+  }
+
+    // Memuat data keranjang
+  Future<void> loadCartFromPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? cartData = prefs.getString('cart');
+    if (cartData != null) {
+      _cartItems = List<Map<String, dynamic>>.from(json.decode(cartData));
+      notifyListeners();
+    }
+  }
+
+
+  // Menyimpan data keranjang
+  void _saveCartToPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('cart', json.encode(_cartItems));
+  }
+
+
+
+
+ 
+
+
 }

@@ -56,12 +56,28 @@ class Keranjang extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: EdgeInsets.zero, // Hilangkan padding default
+                  minimumSize: const Size(150, 50), // Ukuran minimum tombol
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8), // Rounded tombol
+                  ),
                 ),
                 onPressed: () {
                   _showCheckoutDialog(context);
                 },
-                child: const Text("Checkout"),
+                child: const SizedBox(
+                  height: 50, // Tinggi tombol
+                  child: Center(
+                    child: Text(
+                      "Checkout",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
@@ -70,7 +86,8 @@ class Keranjang extends StatelessWidget {
     );
   }
 
-  Widget _buildCartItem(BuildContext context, CartProvider cartProvider, Map<String, dynamic> item, int index) {
+  Widget _buildCartItem(BuildContext context, CartProvider cartProvider,
+      Map<String, dynamic> item, int index) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       color: const Color(0xFF3A3A3A),
@@ -162,8 +179,11 @@ class Keranjang extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         content: const Text(
-          "Pesanan diproses, siapin duitnya ya adick adick :)",
-          style: TextStyle(color: Colors.white70),
+          "Siapin Duitnya ya Adick adick :)",
+          style: TextStyle(
+            color: Colors.white70,
+            fontFamily: 'Fredoka',
+          ),
         ),
         actions: [
           TextButton(
@@ -171,7 +191,7 @@ class Keranjang extends StatelessWidget {
               Navigator.of(context).pop();
             },
             child: const Text(
-              "OK",
+              "CKK OT",
               style: TextStyle(color: Colors.green),
             ),
           ),

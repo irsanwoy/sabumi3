@@ -31,7 +31,7 @@ class PemesananWisata extends StatelessWidget {
               'Clamping Superior',
               'Kamar Superior Tempat Tidur King atau Single + Pemandangan Gunung',
               'Termasuk Makan Pagi untuk 3 Orang',
-              'IDR 1,067,138',
+              'IDR 1,000,000',
               'Pesan',
             ),
             buildRoomCard(
@@ -40,7 +40,7 @@ class PemesananWisata extends StatelessWidget {
               'Tenda Keong',
               'Kamar Keluarga dengan Ranjang 2 Double Pemandangan Gunung',
               'Termasuk Makan Pagi untuk 4 Orang',
-              'IDR 784,690',
+              'IDR 700,000',
               'Pesan',
             ),
             buildRoomCard(
@@ -49,7 +49,7 @@ class PemesananWisata extends StatelessWidget {
               'Tenda Dome',
               'Kamar dengan Ranjang Single atau Double Pemandangan Gunung',
               'Termasuk Makan Pagi untuk 4 Orang',
-              'IDR 364,655',
+              'IDR 300,000',
               'Pesan',
             ),
           ],
